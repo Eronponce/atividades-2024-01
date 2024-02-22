@@ -1,9 +1,20 @@
 # Exercicio 01
-def max_consecutive_sum(nums):
-    # implementar a solução aqui
-    pass
+
+def max_consecutive_sum(nums):  
+    best_sum = -100000
+    temp_sum = 0
+    for i in range(0, len(nums)):
+        temp_sum = temp_sum + nums[i]
+        if (best_sum < temp_sum):
+            best_sum = temp_sum
+        if temp_sum < 0:
+            temp_sum = 0
+    return best_sum 
+
 
 # Testes 01
+
+
 def test_max_consecutive_sum():
     print(max_consecutive_sum([1, -3, 2, 1, -1]) == 3)
     print(max_consecutive_sum([-2, 1, -3, 4, -1, 2, 1, -5, 4]) == 6)
@@ -14,10 +25,15 @@ def test_max_consecutive_sum():
 
 # Exercício 02
 def is_palindrome(word):
-    # implementar a solução aqui
-    pass
+    inverse_word = word[::-1]
+    if (word == inverse_word):
+        return True
+    else:
+        return False
 
 # Testes 02
+
+
 def text_is_palindrome():
     print(is_palindrome("radar") == True)
     print(is_palindrome("racecar") == True)
@@ -31,10 +47,20 @@ def text_is_palindrome():
 
 # Exercício 03
 def count_increasing_subsets(nums):
-    # implementar a solução aqui
-    pass
+    temp_sum = 0
+    for first_num in range(len(nums)):
+        length = 1
+        for j in range(first_num + 1, len(nums)):
+            if nums[j] > nums[j - 1]:
+                length += 1
+            else:
+                break
+        temp_sum += (length * (length + 1)) // 2
+    return temp_sum
 
 # Testes 03
+
+
 def test_count_increasing_subsets():
     # Teste com lista vazia
     print(count_increasing_subsets([]) == 0)
